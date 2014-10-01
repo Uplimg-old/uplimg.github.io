@@ -1,2 +1,370 @@
-Hello world !
+<!doctype html>
+<html lang="fr">
 
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Uplimg - Outil de partage instantané de fichiers</title>
+    <meta name="description" content="Uplimg est une application permettant d'envoyer des fichiers sur le web en un rien de temps. Des images aux textes, en passant par le contenu du presse-papier et des fichiers à télécharger, Uplimg est LA solution rapidité par excellence !">
+    <meta name="keywords" content="Uplimg image upload paste share partage speed rapide lolilol">
+    <link rel="icon" type="image/png" href="assets/img/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="assets/img/favicon-32x32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.jpg">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/apple-touch-icon-72x72.jpg">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/apple-touch-icon-114x114.jpg">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/css/font-lineicons.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/css/animate.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/css/toastr.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all" />
+    <!--[if lt IE 9]>
+        <script src="assets/js/html5.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="landing-page">
+        
+		<!-- Bienvenue dans les sources d'Uplimg !
+			Mais... sortez de là, cette zone est sous contrôle !
+			Menace nucléaire !
+			OUHI !
+			-->
+		
+    <header>
+        <nav class="navigation navigation-header">
+            <div class="container">
+                <div class="navigation-brand">
+                    <div class="brand-logo">
+						<a href="index.html" class="logo"></a>
+						<span class="sr-only">Uplimg</span>
+                    </div>
+                    <button class="navigation-toggle visible-xs" type="button" data-toggle="dropdown" data-target=".navigation-navbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navigation-navbar">
+                    <ul class="navigation-bar navigation-bar-left">
+                        <li class="active"><a href="#home">Accueil</a></li>
+                        <li><a href="#uplimg">Uplimg</a></li>
+                        <li><a href="#features">Fonctionnalités</a></li>
+						<li><a href="#uplimgweb">UplimgWeb</a></li>
+                        <li><a href="#team">Equipe</a></li>
+                        <li><a href="documentation/index.html">Doc/FAQ</a></li>
+                    </ul>
+                    <ul class="navigation-bar navigation-bar-right">
+                        <li><a href="http://update.uplmg.com/0.12/uplimg-0.12d-x86-W.exe">Télécharger</a></li>
+                        <li class="featured"><a href="https://github.com/Imote/Uplimg">Sources (Github)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div id="home" class="static-header light clearfix">
+        <div class="text-heading">
+            <h1 class="animated hiding" data-animation="bounceInDown" data-delay="0">N'attendez plus &mdash; Envoyez vos fichiers <span class="highlight">en un instant</span> !</h1>
+            <p class="animated hiding" data-animation="fadeInDown" data-delay="500"><span class="highlight">Uplimg</span> est une application permettant d'envoyer des fichiers sur le web en un rien de temps.<br/>Des images aux textes, en passant par le contenu du presse-papier, Uplimg est <span class="highlight">LA</span> solution rapidité par excellence !</p>
+            <ul class="list-inline">
+                <li><a href="http://update.uplmg.com/0.12/uplimg-0.12d-x86-W.exe" class="btn btn-primary animated hiding" data-animation="bounceIn" data-delay="700">Télécharger</a></li>
+                <li><a href="https://github.com/Imote/Uplimg" class="btn btn-default animated hiding" data-animation="bounceIn" data-delay="900">Sources (GitHub)</a>       </li>
+            </ul>
+            <p>Uplimg 0.12 Alpha - Windows uniquement (Bientôt pour Linux, on vous le promet ! &lt3)  <br/>Restez au courant : <a href="https://twitter.com/Uplimg">@Uplimg</a></p>
+        </div>
+        <div class="section">
+            <div class="container">
+                <img src="http://uplmg.com/assets/img/features/app_block.png" alt="video" class="img-responsive animated bounceInUp visible" data-animation="bounceInUp" data-delay="1000" />
+            </div>
+        </div>
+    </div>
+    
+    <div id="clients">
+        <div class="container">
+            <ul class="list-inline logos">
+                <li><a href="https://client.dedizones.com/link.php?id=46" title="Dedishops" alt="Dedishops"><img class="animated hiding" data-animation="fadeInUp" data-delay="0" src="assets/img/dedishops-little.png" alt="mashable" /></a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <a id="showHere"></a>
+    
+	<section id="uplimg" class="section dark">
+        <div class="container">
+            
+                <div class="tab-content alt">
+					<div class="section-header animated hiding center" data-animation="fadeInDown">
+						<h2>3 &Eacute;tapes</h2>
+						<div class="sub-heading">
+							Quoi ? On ne vous a pas encore dit qu'Uplimg est ultra-facile d'utilisation ?!
+							<br />Bon... Bah on va vous le prouver alors !
+						</div>
+					</div>
+					<div class="section-content row">
+						<div class="col-sm-4">
+							<article class="text-center animated hiding" data-animation="fadeInLeft" data-delay="0">
+								<i class="howitworks icon icon-office-42 icon-active"></i>
+								<span class="h7">Téléchargez Uplimg</span>
+								<p class="thin" >C'est assez simple, vous cliquez sur un lien, vous installez... Pour que Uplimg marche, ne faudrait-il pas déjà le posséder ? Alors foncez !</p>
+							</article>
+							<!--<span class="icon icon-arrows-04"></span>-->
+						</div>
+						<div class="col-sm-4">
+							<article class="text-center animated hiding" data-animation="fadeInLeft" data-delay="400">
+								<i class="howitworks icon icon-seo-icons-03 icon-active"></i>
+								<span class="h7">Paramétrer</span>
+								<p class="thin" >Uplimg est déjà pré-paramétré de façon à ce qu'il soit utilisable instantanément, mais profitez-en pour le modifier à votre guise. Puisque vous allez en tomber amoureux, autant qu'il soit agréable !</p>
+							</article>
+							<!--<span class="icon icon-arrows-04"></span>-->
+						</div>
+						<div class="col-sm-4">
+							<article class="text-center animated hiding" data-animation="fadeInLeft" data-delay="800">
+								<i class="howitworks icon icon-office-43 icon-active"></i>
+								<span class="h7">Envoyez !</span>
+								<p class="thin" >Essayez "Alt + 2" et sélectionnez votre zone de capture... &Ccedil;a y est ! Vous avez le lien !</p>
+							</article>
+						</div>
+					</div>
+					<br/>
+					<br/>
+				</div>	
+			</div>
+    </section>
+    
+    <section id="features" class="section inverted">
+        <div class="container">
+            <div class="section-content">
+                <div id="featuredTab">
+                    <ul class="list-unstyled animated hiding" data-animation="fadeInRight">
+                      <li class="active">
+                          <a href="#home" data-toggle="tab">
+                              <div class="tab-info">
+                                  <div class="tab-title">Images - Screenshots</div>
+                                  <div class="tab-desc">Uplimg permet d'envoyer des images très rapidement, particulièrement des captures d'écran grâce à ses fonctions tels que la possibilité de séléctionner une zone de capture.</div>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#profile" data-toggle="tab">
+                              <div class="tab-info">
+                                  <div class="tab-title">Pastes - Code/Texte</div>
+                                  <div class="tab-desc">Vous êtes développeur, vous voulez envoyer un "bout de code" à un ami ou un collègue ? Vous souhaitez même pouvoir le modifier en temps réel à plusieurs sur une interface simple ? Vous êtes à la bonne adresse !</div>
+                              </div>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#messages" data-toggle="tab">
+                              <div class="tab-info">
+                                  <div class="tab-title">Tous vos fichiers</div>
+                                  <div class="tab-desc">Vous pouvez aussi envoyer tous vos fichiers pour les partager avec vos amis ou vos collègues, ou pour les retélécharger plus tard, ou ailleurs...</div>
+                              </div>
+                          </a>
+                      </li>
+                    </ul>
+                    
+                    <div class="tab-content animated hiding" data-animation="fadeInLeft">
+                      <div class="tab-pane in active" id="home"><img src="assets/img/features1.png" class="img-responsive animated hiding" data-animation="fadeInLeft" alt="macbook" /></div>
+                      <div class="tab-pane" id="profile"><img src="assets/img/features2.png" class="img-responsive animated hiding" data-animation="fadeInLeft" alt="macbook" /></div>
+                      <div class="tab-pane" id="messages"><img src="assets/img/features3.png" class="img-responsive animated hiding" data-animation="fadeInLeft" alt="macbook" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	<section id="features-list" class="section dark">
+        <div class="container animated hiding" data-animation="fadeInDown">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <article class="center">	
+					<i class="icon icon-office-44 icon-active"></i>
+                    <span class="h7">Cloud complet</span>
+                    <p class="thin">Uplimg c'est simple : vos fichiers dans le Cloud, un lien d'accès, <span>et c'est tout</span> ! Rapide et efficace, que des avantages !</p>
+                </article>
+            </div>                       
+			<div class="col-md-3 col-sm-6 col-xs-12">
+                <article class="center">	
+					<i class="icon icon-shopping-18 icon-active"></i>
+                    <span class="h7">Gratuit !</span>
+                    <p class="thin">L'application Uplimg est complètement gratuite, et est <span>OpenSource</span> !<br/>UplimgWeb est gratuit, et ne pose aucune limite pouvant vous contraindre son utilisation.</p>
+                </article>
+            </div>             
+			<div class="col-md-3 col-sm-6 col-xs-12">
+                <article class="center">	
+					<i class="icon icon-seo-icons-27 icon-active"></i>
+                    <span class="h7">Multi-supports</span>
+                    <p class="thin">Uplimg est compatible PC et bientôt Linux !<br/>Uplimgweb quant-à-lui est compatible Smartphones et tablettes sans soucis<br/>Vous allez enfin pouvoir travailler partout !</p>
+                </article>
+            </div>             
+			<div class="col-md-3 col-sm-6 col-xs-12">
+                <article class="center">	
+					<i class="icon icon-office-24 icon-active"></i>
+                    <span class="h7">En un temps record</span>
+                    <p class="thin">Nous avons conçu Uplimg avec un seul mot d'ordre : <span class="highlight">LA RAPIDIT&Eacute;</span>. Parfait pour augmenter votre productivité !</p>
+                </article>
+            </div>
+        </div>
+    </section>	
+	
+	<section id="uplimgweb" class="long-block light">
+        <div class="container center">
+            <div class="col-sm-12 col-lg-9">
+                <article>
+                    <h2>UPLIMG<strong>WEB</strong></h2>
+                     <p class="thin">UplimgWeb est un serveur d'envoi public imaginé et développé par l'équipe d'Uplimg. Celui-ci permet d'exploiter au maximum les fonctionnalités d'Uplimg.<br/>Il est accessible par tous, gratuitement, sans limites contraignantes, il apporte aussi beaucoup de fonctionnalités !<br/>Il arrive très bientôt avec des fonctionnalités inédites !</p>
+                </article>
+            </div>
+        </div>
+    </section>
+	
+    <section id="product" class="section dark">
+        <div class="container">
+            <div class="section-header animated hiding" data-animation="fadeInDown">
+                <h2><span class="highlight">PRODUITS</span> UPLIMGWEB</h2>
+                <div class="sub-heading">
+                    UplimgWeb est totalement gratuit !
+                    <br>Profitez-en !
+                </div>
+            </div>
+            <div class="section-content row">
+            
+                <div class="col-sm-4 col-sm-push-2">
+                    <div class="package-column animated hiding" data-animation="flipInY">
+                        <div class="package-title">Gratuit</div>
+                        <div class="package-price">
+                            <div class="price">Gratuit</div>
+                            <div class="period">à vie</div>
+                        </div>
+                        <div class="package-detail">
+                            <ul class="list-unstyled">
+                                <li><strong>1</strong> compte</li>
+                                <li>Adresses en <strong>uplmg.com</strong></li>
+                                <li>Espace disque <strong>Illimité</strong></li>
+                                <li>Serveurs de <strong>UplimgWeb</strong></li>
+                                <li>Assistance <strong>Rapide et gratuite</strong></li>
+                            </ul>
+                            <a class="btn btn-secondary btn-block">Bientôt :-)</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-sm-push-2">
+                    <div class="package-column animated hiding" data-animation="flipInY">
+                        <div class="package-title">OFFRE PROFESSIONNEL</div>
+                        <div class="package-price">
+                            <div class="price" style="font-size:55px;">À NEGOCIER</div>
+                        </div>
+                        <div class="package-detail">
+                            <ul class="list-unstyled">
+                                <li>Adresses <strong>personnalisées</strong></li>
+                                <li>Espace disque <strong>Illimité</strong></li>
+                                <li><strong>Choix</strong> du serveur</li>
+                                <li>Installation sur votre <strong>propre serveur</strong> possible</li>
+                                <li>Assistance <strong>Rapide et gratuite</strong></li>
+                            </ul>
+                            <a class="btn btn-secondary btn-block">Contactez-nous !</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+	
+	<section id="partner" class="section light">
+        <div class="container">
+            <div class="section-header animated hiding" data-animation="fadeInDown">
+                <h2><span class="highlight">NOTRE</span> PARTENAIRE</h2>
+                <div class="sub-heading">
+                    Alors déjà que sans vous, Uplimg n'existerait pas,
+                    <br />sans notre partenaire, même ce site web vous ne le verriez pas !
+                </div>
+            </div>
+            <div class="section-content">                
+                <ul class="list-inline logos">
+                    <li><a href="https://client.dedizones.com/link.php?id=46" target="_blank"><img class="animated hiding" data-animation="fadeInUp" data-delay="0" src="assets/img/dedishops.png" alt="mashable" /></a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section id="download" class="long-block light">
+        <div class="container">
+            <div class="col-md-12 col-lg-9">
+                <article class="pull-left">
+                    <h2>T&Eacute;L&Eacute;CHARGEZ <strong>UPLIMG</strong> !</h2>
+                    <p class="thin">Quoi ? On ne vous a toujours pas convaincu ? Un projet libre, cool, auquel vous pouvez participer, qui fait naître un programme trop (i)moumoute ? Ah bah voilà, bon, vous avez juste à cliquer sur le bouton !</p>
+                </article>
+            </div>
+			
+            <div class="col-md-12 col-lg-3">
+                <a href="http://update.uplmg.com/0.12/uplimg-0.12d-x86-W.exe" class="btn btn-default">Telecharger Uplimg</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="footer" class="footer light">
+        <div class="container">
+            <div class="footer-content row">
+                <div class="col-sm-4">
+                    <div class="logo-wrapper">
+                        <img src="assets/img/logo.png" alt="logo" />
+                    </div>
+                    <p>Uplimg est un projet lancé en Mai 2014 et dont le développement a commencé en Juin 2014.<br/>L'idée d'origine était de pouvoir envoyer
+                    des images sur un serveur aisément et simplement, ce qui est chose
+                    faite :-D !</p>
+                </div>
+                <div class="col-sm-5 social-wrap">
+                    <div class="footer-title">Suivre @Uplimg</div>
+                    <ul class="list-inline socials">
+                        <li><a href="#"><span class="icon icon-socialmedia-07"></span></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <div class="footer-title">Nous contacter</div>
+                    <ul class="list-unstyled">
+                        <li>
+                            <span class="icon icon-chat-messages-14"></span> 
+                            <a href="mailto:team@uplmg.com">team@uplmg.com</a>
+                        </li>
+                        <li>
+                            <span class="icon icon-socialmedia-07"></span> 
+                            <a href="https://twitter.com/_MartinH_">@_MartinH_</a>
+                        </li>
+                        <li>
+                            <span class="icon icon-socialmedia-07"></span>
+                            <a href="https://twitter.com/si0ls">@si0ls</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">Site web par <a href="http://www.si0ls.fr/">si0ls</a> - Propulsé par <a href="https://client.dedizones.com/link.php?id=46">DediShops</a></div>
+    </footer>
+    
+    <div class="back-to-top"><i class="fa fa-angle-up fa-3x"></i></div>
+    
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/jquery-1.11.0.min.js?ver=1"></script>
+    <![endif]-->  
+    <!--[if (gte IE 9) | (!IE)]><!-->  
+        <script type="text/javascript" src="assets/js/jquery-2.1.0.min68b3.js?ver=1"></script>
+    <!--<![endif]-->  
+    
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.nav.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.plugin.js"></script>
+    <script type="text/javascript" src="assets/js/waypoints.min.js"></script>
+    <script type="text/javascript" src="assets/js/waypoints-sticky.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="assets/js/toastr.min.js"></script>
+    <script type="text/javascript" src="assets/js/headhesive.min.js"></script>
+    <script type="text/javascript" src="assets/js/scripts.js"></script>
+</body>
+
+</html>

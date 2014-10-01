@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+  
+<head>
+    <meta charset="utf-8">
+    <title>Uplimg - Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,500,700' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body class="knowkedgebase">
+
+    <!-- Navbar -->
+
+    <header class="banner navbar navbar-static-top" role="banner">
+      <div class="container">
+
+        <div class="navbar-header">
+          
+          <button data-target=".nav-responsive" data-toggle="collapse" type="button" class="navbar-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+        </div>
+
+        <nav class="nav-main hidden-xs" role="navigation">
+          <ul id="menu-main" class="nav navbar-nav">
+            <li><a href="index.html">Accueil</a></li>
+            <li class="active"><a href="documentation.html">Documentation</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>    
+        </nav>
+
+        <!-- Responsive Nav -->
+        <div class="visible-xs">
+          <nav class="nav-responsive collapse" role="navigation">
+            <ul class="nav">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="documentation.html">Documentation</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            </ul>       
+          </nav>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Paga title -->
+    <div class="main-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-lg-8">
+            <h1>Retour sur Uplimg</h1>
+            <p class="tagline">C'est tout bon ? Vous avez ce qu'il vous faut ?</p>
+          </div>
+          <div class="col-sm-4 col-lg-4">
+            <a href="http://www.uplmg.com" class="btn btn-lg btn-success">Retour sur Uplimg</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="wrap container" role="document">
+      <div class="content row">
+        <div class="main col-sm-9" role="main">
+
+          <article class="post hentry">
+            <header>  
+             <h2 class="entry-title"><i class="fa fa-fw fa-file-text-o"></i>Post data HTTP</h2>
+            </header>
+            <div class="entry-content">
+                <p>
+                    Vous souhaitez monter votre propre serveur HTTP pour recevoir les fichiers envoyé par Uplimg sur votre infrastructure ?<br>
+                    C'est très simple à mettre en place et je vais vous montrer comment. Les exemples ici seront montrés en PHP.
+                </p>
+                <p>
+                    Lors de l'envoi du fichier, plusieurs informations sont transmises en même temps. L'information la plus importante est tout naturellement le fichier qui est nommé <em>uplimgFile</em> dans la requête. Voici la méthode de récupération en PHP :
+                </p>
+                <div class="well"><samp>
+                &lt;?php
+                $uplimgFile = $_FILES['uplimgFile'];
+                </samp></div>
+                
+                <p>Uplimg transmet également le <em>username</em>, le <em>password</em>, le <em>type du fichier</em>, la <em>la clé privée</em> et la <em>version d'Uplimg utilisé</em>.</p>
+                <div class="well"><samp>
+                &lt;?php<br>
+                $uplimgUsername = $_POST['uplimgUsername'];<br />
+                    $uplimgPassword = $_POST['uplimgPassword']; <span class="text-success">//Crypté en SHA-1</span><br>
+                    $uplimgFileType = $_POST['uplimgFileType']; <span class="text-success">//Valeurs possibles : paste, image, file, undefined</span><br>
+                    $uplimgKey = $_POST['uplimgKey']; <span class="text-success">//Clé unique à tout combo username/password</span><br/>
+                    $uplimgVersion = (string)$_POST['uplimgVersion']; <span class="text-success">//Version d'Uplimg utilisé</span>
+                </samp></div>
+                
+                <p>Lorsque vous envoyez un paste vous avez le choix entre envoyer un texte classique ou envoyer un code. Lorsque vous sélectionnez un langage dans la liste déroulante, deux informations sont envoyés en plus au serveur HTTP.</p>
+                <div class="well"><samp>
+                    $uplimgFileLanguage = $_POST['uplimgFileLanguage']; <span class="text-success">//Nom de code de la sélection</span>
+                    $uplimgFileLanguageHR = $_POST['uplimgFileLanguageHR']; <span class="text-success">//Nom lisible de la sélection (HR = Human readable)</span>
+                </samp></div>
+                
+                <p>Voici les valeurs possibles :</p>
+                <table class="table table-striped">
+                    <tr><th>Human Readable</th><th>Code name</th></tr>
+                    <tr><td>Classic text</td><td>text</td></tr>
+                    <tr><td>ActionScript3</td><td>as3</td></tr>
+                    <tr><td>Bash/shell (linux/unix)</td><td>bash</td></tr>
+                    <tr><td>ColdFusion</td><td>coldfusion</td></tr>
+                    <tr><td>C#</td><td>csharp</td></tr>
+                    <tr><td>C</td><td>c</td></tr>
+                    <tr><td>C++</td><td>cpp</td></tr>
+                    <tr><td>CSS</td><td>css</td></tr>
+                    <tr><td>Delphi</td><td>delphi</td></tr>
+                    <tr><td>Diff</td><td>diff</td></tr>
+                    <tr><td>Erlang</td><td>erlang</td></tr>
+                    <tr><td>Groovy</td><td>groovy</td></tr>
+                    <tr><td>HTML</td><td>xml</td></tr>
+                    <tr><td>JavaScript</td><td>javascript</td></tr>
+                    <tr><td>Java</td><td>java</td></tr>
+                    <tr><td>JavaFX</td><td>javafx</td></tr>
+                    <tr><td>Perl</td><td>perl</td></tr>
+                    <tr><td>PHP</td><td>php</td></tr>
+                    <tr><td>PowerShell</td><td>powershell</td></tr>
+                    <tr><td>Python</td><td>python</td></tr>
+                    <tr><td>Ruby</td><td>ruby</td></tr>
+                    <tr><td>Scala</td><td>scala</td></tr>
+                    <tr><td>SQL</td><td>sql</td></tr>
+                    <tr><td>Visual Basic</td><td>vbnet</td></tr>
+                    <tr><td>XML</td><td>xml</td></tr>
+                    
+                </table>
+                
+                <p>Voilà c'est aussi simple que ça :-). Si vous avez une question, demandez à <a href="https://twitter.com/Uplimg">@Uplimg</a>.</p>
+          <footer>
+            <p>Dernière mise à jour : Dimanche 7 septembre 2014</p>
+            <p>Par Imote</p>
+          </footer>
+        </article>  
+
+      </div><!-- /.main -->
+
+      <!-- Sidebar -->
+      <aside class="sidebar col-sm-3" role="complementary">
+
+        <section class="widget nav_menu-2 widget_nav_menu">
+          <div>
+            <h3>Documention</h3>
+            <ul>
+              <li><a href="documentation.html">Post data HTTP</a></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="widget">
+          <div>
+            <h3>FAQ</h3>
+            <ul>
+              <li>
+                <a href="faq.html">Comment utiliser Uplimg sous Linux/Unix ?</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+      </aside><!-- /.sidebar -->
+    </div><!-- /.content -->
+  </div><!-- /.wrap -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="assets/js/application.js"></script>
+
+  </body>
+
+</html>
